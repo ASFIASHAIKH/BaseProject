@@ -1,0 +1,521 @@
+                                           GIT TASK {SANDEEP SIR} 
+===================================================================================================================
+1. Establish a remote "repository" with a meaningful project name. Generate DEV/QA/UAT/PROD branches within the 
+   remote repository. Clone the repository locally. Create a local branch named after you, add files, commit them 
+   locally, and then push that branch to the remote repository. Initiate a Pull Request (PR) and subsequently merge
+   your branch into the Dev branch.
+===================================================================================================================
+ANS}
+root@DESKTOP-8OOG2HF:~# mkdir GitHub
+
+root@DESKTOP-8OOG2HF:~# cd GitHub/
+root@DESKTOP-8OOG2HF:GitHub# git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /root/GitHub/.git/
+
+--------------------------------
+#Clone the repository locally
+--------------------------------
+root@DESKTOP-8OOG2HF:GitHub# git clone git@github.com:ASFIASHAIKH/GitHub.git
+Cloning into 'GitHub'...
+The authenticity of host 'github.com (20.207.73.82)' can't be established.
+ED25519 key fingerprint is SHA256:+DiY3wvvV6TuJJhbpZisF/zLDA0zPMSvHdkr4UvCOqU.
+This key is not known by any other names
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com' (ED25519) to the list of known hosts.
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+root@DESKTOP-8OOG2HF:GitHub# ll
+total 16
+drwxr-xr-x 4 root root 4096 Jan  4 17:42 ./
+drwx------ 9 root root 4096 Jan  4 17:43 ../
+drwxr-xr-x 7 root root 4096 Jan  4 14:20 .git/
+drwxr-xr-x 3 root root 4096 Jan  4 17:42 GitHub/
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:GitHub# cd GitHub/
+root@DESKTOP-8OOG2HF:GitHub# ll
+total 16
+drwxr-xr-x 3 root root 4096 Jan  4 17:42 ./
+drwxr-xr-x 4 root root 4096 Jan  4 17:48 ../
+drwxr-xr-x 8 root root 4096 Jan  4 17:42 .git/
+-rw-r--r-- 1 root root   16 Jan  4 17:42 README.md
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:GitHub# git branch -a
+* main
+  remotes/origin/DEV
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/PROD
+  remotes/origin/QA
+  remotes/origin/UAT
+  remotes/origin/main
+-------------
+#add files
+-------------
+root@DESKTOP-8OOG2HF:GitHub# touch data{1..3}.txt
+
+root@DESKTOP-8OOG2HF:GitHub# git add .
+
+root@DESKTOP-8OOG2HF:GitHub# git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   data1.txt
+        new file:   data2.txt
+        new file:   data3.txt
+-----------------------
+#commit them locally
+-----------------------
+root@DESKTOP-8OOG2HF:GitHub# git commit -m "Adding data.txt"
+[main 727e615] Adding data.txt
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 data1.txt
+ create mode 100644 data2.txt
+ create mode 100644 data3.txt
+ 
+root@DESKTOP-8OOG2HF:GitHub# git status
+On branch main
+Your branch is ahead of 'origin/main' by 1 commit.
+  (use "git push" to publish your local commits)
+
+nothing to commit, working tree clean
+------------------------------------------------ 
+#push that branch to the remote repository
+------------------------------------------------
+root@DESKTOP-8OOG2HF:GitHub# git push origin main
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 282 bytes | 282.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:ASFIASHAIKH/GitHub.git
+   f9fa799..727e615  main -> main
+
+===================================================================================================================
+2. Set up a remote "repository" with a project name that holds significance. In the master branch of the remote 
+   repository, create a file named demo.txt. After creating the file, clone the repository locally. Within the 
+   local repository, create three branches: feature/login, feature/mainline, and release. Add a login.txt file 
+   to the feature/login branch and push the branch to the remote repository. Create a PR, approve it, and then 
+   merge the feature/login branch into the remote master branch.
+===================================================================================================================
+ANS}
+root@DESKTOP-8OOG2HF:~# mkdir light
+root@DESKTOP-8OOG2HF:~# cd light/
+
+root@DESKTOP-8OOG2HF:light# git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint:   git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint:   git branch -m <name>
+Initialized empty Git repository in /root/light/.git/
+
+root@DESKTOP-8OOG2HF:light# ll
+total 12
+drwxr-xr-x  3 root root 4096 Jan  4 18:37 ./
+drwx------ 10 root root 4096 Jan  4 18:37 ../
+drwxr-xr-x  7 root root 4096 Jan  4 18:37 .git/
+
+root@DESKTOP-8OOG2HF:light# git clone git@github.com:ASFIASHAIKH/QuickFix.git
+Cloning into 'QuickFix'...
+remote: Enumerating objects: 6, done.
+remote: Counting objects: 100% (6/6), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 6 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (6/6), done.
+
+root@DESKTOP-8OOG2HF:light# ll
+total 16
+drwxr-xr-x  4 root root 4096 Jan  4 18:39 ./
+drwx------ 10 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x  7 root root 4096 Jan  4 18:37 .git/
+drwxr-xr-x  3 root root 4096 Jan  4 18:39 QuickFix/
+
+root@DESKTOP-8OOG2HF:light# cd QuickFix/
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+root@DESKTOP-8OOG2HF:QuickFix# ll
+total 20
+drwxr-xr-x 3 root root 4096 Jan  4 18:39 ./
+drwxr-xr-x 4 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x 8 root root 4096 Jan  4 18:39 .git/
+-rw-r--r-- 1 root root   20 Jan  4 18:39 README.md
+-rw-r--r-- 1 root root   49 Jan  4 18:39 demo.txt
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:QuickFix# git checkout -b feature/login
+Switched to a new branch 'feature/login'
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+* feature/login
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+  
+root@DESKTOP-8OOG2HF:QuickFix# git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:QuickFix# git checkout -b feature/mainline
+Switched to a new branch 'feature/mainline'
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+* feature/mainline
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+root@DESKTOP-8OOG2HF:QuickFix# git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+  feature/mainline
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:QuickFix# git checkout -b release
+Switched to a new branch 'release'
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+  feature/mainline
+  main
+* release
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+root@DESKTOP-8OOG2HF:QuickFix# git checkout main
+Switched to branch 'main'
+Your branch is up to date with 'origin/main'.
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+  feature/mainline
+* main
+  release
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:QuickFix# git checkout -b feature/login
+fatal: A branch named 'feature/login' already exists.
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+  feature/mainline
+* main
+  release
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/main
+-------------------------------------------------------------------------------------------------------------------
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+  feature/mainline
+* main
+  release
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/login
+  remotes/origin/main
+root@DESKTOP-8OOG2HF:QuickFix# git checkout feature/login
+Switched to branch 'feature/login'
+
+root@DESKTOP-8OOG2HF:QuickFix# ll
+total 20
+drwxr-xr-x 3 root root 4096 Jan  4 19:01 ./
+drwxr-xr-x 4 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x 8 root root 4096 Jan  4 19:01 .git/
+-rw-r--r-- 1 root root   20 Jan  4 18:39 README.md
+-rw-r--r-- 1 root root   49 Jan  4 18:39 demo.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# touch login.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# git add .
+
+root@DESKTOP-8OOG2HF:QuickFix# git commit -m "Adding a file login.txt"
+[feature/login dad3bd6] Adding a file login.txt
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 login.txt
+ 
+root@DESKTOP-8OOG2HF:QuickFix# git status
+On branch feature/login
+nothing to commit, working tree clean
+
+root@DESKTOP-8OOG2HF:QuickFix# ll
+total 20
+drwxr-xr-x 3 root root 4096 Jan  4 19:02 ./
+drwxr-xr-x 4 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x 8 root root 4096 Jan  4 19:02 .git/
+-rw-r--r-- 1 root root   20 Jan  4 18:39 README.md
+-rw-r--r-- 1 root root   49 Jan  4 18:39 demo.txt
+-rw-r--r-- 1 root root    0 Jan  4 19:02 login.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# git remote -v
+origin  git@github.com:ASFIASHAIKH/QuickFix.git (fetch)
+origin  git@github.com:ASFIASHAIKH/QuickFix.git (push)
+
+root@DESKTOP-8OOG2HF:QuickFix# git push origin feature/login
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 309 bytes | 309.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:ASFIASHAIKH/QuickFix.git
+   c103be2..dad3bd6  feature/login -> feature/login
+root@DESKTOP-8OOG2HF:QuickFix#
+
+===================================================================================================================
+3. Populate the local repository's feature/mainline branch with files and push that branch to the remote repository.
+   Add additional files to the feature/mainline remote branch through the UI. Fetch the latest changes on the local
+   feature/mainline using the Fetch and Pull commands.
+===================================================================================================================
+root@DESKTOP-8OOG2HF:laptop#  cd
+root@DESKTOP-8OOG2HF:~# ll
+
+drwxr-xr-x  4 root   root    4096 Jan  4 18:39 light/
+
+root@DESKTOP-8OOG2HF:~# cd light/
+root@DESKTOP-8OOG2HF:light# ll
+total 16
+drwxr-xr-x  4 root root 4096 Jan  4 18:39 ./
+drwx------ 11 root root 4096 Jan  5 14:28 ../
+drwxr-xr-x  7 root root 4096 Jan  4 18:37 .git/
+drwxr-xr-x  3 root root 4096 Jan  4 19:02 QuickFix/
+
+root@DESKTOP-8OOG2HF:light# cd QuickFix/
+root@DESKTOP-8OOG2HF:QuickFix# ll
+total 20
+drwxr-xr-x 3 root root 4096 Jan  4 19:02 ./
+drwxr-xr-x 4 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x 8 root root 4096 Jan  4 19:02 .git/
+-rw-r--r-- 1 root root   20 Jan  4 18:39 README.md
+-rw-r--r-- 1 root root   49 Jan  4 18:39 demo.txt
+-rw-r--r-- 1 root root    0 Jan  4 19:02 login.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+* feature/login
+  feature/mainline
+  main
+  release
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/login
+  remotes/origin/main
+  
+root@DESKTOP-8OOG2HF:QuickFix# git checkout  feature/mainline
+Switched to branch 'feature/mainline'
+
+root@DESKTOP-8OOG2HF:QuickFix# git branch -a
+  feature/login
+* feature/mainline
+  main
+  release
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/login
+  remotes/origin/main
+  
+root@DESKTOP-8OOG2HF:QuickFix# touch media{1..3}.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# ll
+total 20
+drwxr-xr-x 3 root root 4096 Jan  5 14:32 ./
+drwxr-xr-x 4 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x 8 root root 4096 Jan  5 14:32 .git/
+-rw-r--r-- 1 root root   20 Jan  4 18:39 README.md
+-rw-r--r-- 1 root root   49 Jan  4 18:39 demo.txt
+-rw-r--r-- 1 root root    0 Jan  5 14:32 media1.txt
+-rw-r--r-- 1 root root    0 Jan  5 14:32 media2.txt
+-rw-r--r-- 1 root root    0 Jan  5 14:32 media3.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# git add .
+
+root@DESKTOP-8OOG2HF:QuickFix# git status
+On branch feature/mainline
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   media1.txt
+        new file:   media2.txt
+        new file:   media3.txt
+
+root@DESKTOP-8OOG2HF:QuickFix# git commit -m "adding media.txt files"
+[feature/mainline 13aaf42] adding media.txt files
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 media1.txt
+ create mode 100644 media2.txt
+ create mode 100644 media3.txt
+ 
+root@DESKTOP-8OOG2HF:QuickFix# git status
+On branch feature/mainline
+nothing to commit, working tree clean
+
+root@DESKTOP-8OOG2HF:QuickFix# git push origin feature/mainline
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 318 bytes | 159.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To github.com:ASFIASHAIKH/QuickFix.git
+   c103be2..13aaf42  feature/mainline -> feature/mainline
+
+root@DESKTOP-8OOG2HF:QuickFix# git pull origin feature/mainline
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), 650 bytes | 650.00 KiB/s, done.
+From github.com:ASFIASHAIKH/QuickFix
+ * branch            feature/mainline -> FETCH_HEAD
+   13aaf42..0001906  feature/mainline -> origin/feature/mainline
+Updating 13aaf42..0001906
+Fast-forward
+ new_file | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 new_file
+root@DESKTOP-8OOG2HF:QuickFix# ll
+total 24
+drwxr-xr-x 3 root root 4096 Jan  5 14:38 ./
+drwxr-xr-x 4 root root 4096 Jan  4 18:39 ../
+drwxr-xr-x 8 root root 4096 Jan  5 14:38 .git/
+-rw-r--r-- 1 root root   20 Jan  4 18:39 README.md
+-rw-r--r-- 1 root root   49 Jan  4 18:39 demo.txt
+-rw-r--r-- 1 root root    0 Jan  5 14:32 media1.txt
+-rw-r--r-- 1 root root    0 Jan  5 14:32 media2.txt
+-rw-r--r-- 1 root root    0 Jan  5 14:32 media3.txt
+-rw-r--r-- 1 root root   11 Jan  5 14:38 new_file
+
+===================================================================================================================
+4. Establish a remote "repository" for a dashboard application with a meaningful project name. Create the following
+   branches: master, release, hotfix, feature/login, feature/submit, and feature/dashboard. Clone the repository 
+   locally. Create a local branch named after you, add files, commit them locally, and then push that branch to the
+   remote repository. Create a PR and merge your branch into the respective branch.
+===================================================================================================================
+ANS}
+root@DESKTOP-8OOG2HF:~# cd laptop/
+root@DESKTOP-8OOG2HF:laptop# ll
+total 12
+drwxr-xr-x  3 root root 4096 Jan  5 14:29 ./
+drwx------ 11 root root 4096 Jan  5 14:32 ../
+drwxr-xr-x  7 root root 4096 Jan  5 14:29 .git/
+
+root@DESKTOP-8OOG2HF:laptop# ll
+total 12
+drwxr-xr-x  3 root root 4096 Jan  5 14:29 ./
+drwx------ 11 root root 4096 Jan  5 14:32 ../
+drwxr-xr-x  7 root root 4096 Jan  5 14:29 .git/
+
+root@DESKTOP-8OOG2HF:laptop# git clone git@github.com:ASFIASHAIKH/BaseProject.git
+Cloning into 'BaseProject'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+root@DESKTOP-8OOG2HF:laptop# git checkout -b BasicApp
+Switched to a new branch 'BasicApp'
+
+root@DESKTOP-8OOG2HF:laptop# git branch -a
+root@DESKTOP-8OOG2HF:laptop# ll
+total 16
+drwxr-xr-x  4 root root 4096 Jan  5 14:42 ./
+drwx------ 11 root root 4096 Jan  5 14:43 ../
+drwxr-xr-x  7 root root 4096 Jan  5 14:43 .git/
+drwxr-xr-x  3 root root 4096 Jan  5 14:42 BaseProject/
+
+root@DESKTOP-8OOG2HF:laptop# cd BaseProject/
+
+root@DESKTOP-8OOG2HF:BaseProject# git branch -a
+* main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/dashboard
+  remotes/origin/feature/login
+  remotes/origin/feature/submit
+  remotes/origin/hotfix
+  remotes/origin/main
+  remotes/origin/master
+  remotes/origin/release
+  
+root@DESKTOP-8OOG2HF:BaseProject# git checkout -b BasicApp
+Switched to a new branch 'BasicApp'
+
+root@DESKTOP-8OOG2HF:BaseProject# git branch -a
+* BasicApp
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/dashboard
+  remotes/origin/feature/login
+  remotes/origin/feature/submit
+  remotes/origin/hotfix
+  remotes/origin/main
+  remotes/origin/master
+  remotes/origin/release
+  
+root@DESKTOP-8OOG2HF:BaseProject# touch files_01 files_02 files_03
+root@DESKTOP-8OOG2HF:BaseProject# ll
+total 16
+drwxr-xr-x 3 root root 4096 Jan  5 14:45 ./
+drwxr-xr-x 4 root root 4096 Jan  5 14:42 ../
+drwxr-xr-x 8 root root 4096 Jan  5 14:44 .git/
+-rw-r--r-- 1 root root   26 Jan  5 14:42 README.md
+-rw-r--r-- 1 root root    0 Jan  5 14:45 files_01
+-rw-r--r-- 1 root root    0 Jan  5 14:45 files_02
+-rw-r--r-- 1 root root    0 Jan  5 14:45 files_03
+
+root@DESKTOP-8OOG2HF:BaseProject# git add .
+
+root@DESKTOP-8OOG2HF:BaseProject# git status
+On branch BasicApp
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        new file:   files_01
+        new file:   files_02
+        new file:   files_03
+
+root@DESKTOP-8OOG2HF:BaseProject# git commit -m "Adding three files"
+[BasicApp b391440] Adding three files
+ 3 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 files_01
+ create mode 100644 files_02
+ create mode 100644 files_03
+ 
+root@DESKTOP-8OOG2HF:BaseProject# git status
+On branch BasicApp
+nothing to commit, working tree clean
+
+root@DESKTOP-8OOG2HF:BaseProject# git push origin BasicApp
+Enumerating objects: 4, done.
+Counting objects: 100% (4/4), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (2/2), done.
+Writing objects: 100% (3/3), 283 bytes | 141.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'BasicApp' on GitHub by visiting:
+remote:      https://github.com/ASFIASHAIKH/BaseProject/pull/new/BasicApp
+remote:
+To github.com:ASFIASHAIKH/BaseProject.git
+ * [new branch]      BasicApp -> BasicApp
+===================================================================================================================
